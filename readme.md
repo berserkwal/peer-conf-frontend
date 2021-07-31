@@ -1,17 +1,29 @@
-# p2p conference app frontend repo
+# PeerConf
 
-## To-DO
+Repository for the p2p conference app - front end.
 
-* Design Mockups for ux and ui
-* Make the landing page
-* Make the Login/Sign up page
-* Make the post-login page with room generation
-* Make the conference page
+## Progress
 
-## In Progress
+| Tasks               | Sub-tasks                          | Status |
+| :------------------ | :--------------------------------- | :----: |
+| **Wireframing**     | ---                                |   ✅   |
+| ---                 | _First time landing_               |   ✅   |
+| ---                 | _Back again landing_               |   ✅   |
+| ---                 | _Sign-up page_                     |   ✅   |
+| ---                 | _Log-in page_                      |   ✅   |
+| ---                 | _Conference page_                  |   ✅   |
+| ---                 | _Leave meeting page_               |   ✅   |
+| **Learning Vue.js** |                                    |   🚧   |
+| ---                 | _Template Syntax_                  |   ✅   |
+| ---                 | _Data properties and Methods_      |   ✅   |
+| ---                 | _Class and Style Binding_          |   ✅   |
+| ---                 | _Conditional Rendering_            |   ✅   |
+| ---                 | _List Rendering_                   |   ✅   |
+| ---                 | _Event Handling_                   |   ✅   |
+| ---                 | _Form Basics_                      |   ✅   |
+| ---                 | _Computed Properties and Watchers_ |   🚧   |
+| ---                 | _Components_                       |   📌   |
+| ---                 | _..._                              |   📌   |
+| **Coding**          |                                    |   📌   |
 
-* ...
-
-## Completed
-
-* ...
+_Legend: ✅ Completed | 🚧 In Progress | 📌 To-do_
