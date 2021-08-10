@@ -59,7 +59,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 | ---_Component Props_             |   ✅   |
 | ---_Provide/Inject_              |   ✅   |
 | ---_Component Events_            |   ✅   |
-| ---_Slots_                       |   🚧   |
+| ---_Slots_                       |   ✅   |
+| ---_Component Styles_            |   ✅   |
+| ---_Dynamic Components_          |   ✅   |
+| ---_Teleport Component_          |   ✅   |
+| ---Lifecycle Hooks\_             |   ✅   |
+| ---Template Refs\_               |   🚧   |
 | ---_..._                         |   📌   |
 | **Coding**---                    |   📌   |
 
