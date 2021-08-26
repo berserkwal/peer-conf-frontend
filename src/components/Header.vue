@@ -6,17 +6,25 @@
       </div>
       <span class="logo-text">PeerConf</span>
     </router-link>
-    <div class="right-side-icons">
+    <div
+      class="right-side-icons"
+      v-if="
+        $route.name !== 'Log In' &&
+          $route.name !== 'Get Started' &&
+          $route.name !== 'Leave Meeting' &&
+          $route.name !== 'Join Meeting'
+      "
+    >
       <div class="buttons" v-if="!isLoggedIn">
-        <router-link to="/login"
+        <router-link tabindex="-1" to="/login"
           ><Button class="secondary-button" text="Log in"
         /></router-link>
-        <router-link to="/get-started"
+        <router-link tabindex="-1" to="/get-started"
           ><Button class="primary-button" text="Sign up"
         /></router-link>
       </div>
       <div class="profile-icon" v-else>
-        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="" />
+        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt />
       </div>
     </div>
   </header>
@@ -50,6 +58,7 @@ header {
   font-size: 1.2rem;
   text-decoration: none;
   color: inherit;
+  padding: 0.5rem;
 }
 
 .logo:hover {
@@ -69,8 +78,8 @@ header {
   gap: 1.5rem;
 }
 .profile-icon {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   border-radius: 50%;
   overflow: hidden;
 }

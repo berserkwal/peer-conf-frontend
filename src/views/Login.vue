@@ -3,13 +3,13 @@
     <div class="form-wrapper">
       <div><h2>Log In</h2></div>
       <form ref="form" @submit.prevent="submitEvent" novalidate>
-        <InputComponent
+        <ValidatingInput
           v-model="form.email"
           inputType="email"
           inputPlaceholder="Enter your email"
         />
 
-        <InputComponent
+        <ValidatingInput
           ref="email"
           v-model="form.password"
           inputType="password"
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import InputComponent from '../components/InputComponent.vue';
+import ValidatingInput from '../components/ValidatingInput.vue';
 import Button from '../components/Button.vue';
 export default {
   name: 'Login',
@@ -49,11 +49,13 @@ export default {
       },
     };
   },
-  components: { InputComponent, Button },
+  components: { ValidatingInput, Button },
   methods: {
     submitEvent() {
-      this.$refs.form.checkValidity();
-      // if (this.form.email.validity) console.log('Submitted');
+      if (this.$refs.form.checkValidity()) {
+        return;
+      }
+      // ToDo: async stuff
     },
   },
 };

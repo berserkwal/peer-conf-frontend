@@ -7,12 +7,40 @@
           <p>Private, Secure and Free.</p>
         </div>
         <div class="actions-wrapper">
-          <router-link to="/get-started"
-            ><Button class="primary-button" text="Get Started"
-          /></router-link>
-          <div>
-            Already have an account?
-            <router-link to="/login">Log in</router-link>
+          <div class="actions" v-if="!isLoggedIn">
+            <router-link tabindex="-1" to="/get-started"
+              ><Button class="primary-button" text="Get Started"
+            /></router-link>
+            <div>
+              Already have an account?
+              <router-link to="/login">Log in</router-link>
+            </div>
+          </div>
+          <div class="actions" v-else>
+            <Button
+              class="primary-button small-text"
+              text="Create New Meeting"
+            />
+            or
+            <form
+              ref="form"
+              class="one-liner"
+              novalidate
+              @submit.prevent="submitEvent"
+            >
+              <NonValidatingInput
+                inputPlaceholder="Enter Meeting Code"
+                inputType="text"
+                v-model="meetingCode"
+                @adding-value="error = ''"
+                :error="error"
+              />
+              <Button
+                :tabIndex="-1"
+                class="secondary-button small-text"
+                text="Join"
+              />
+            </form>
           </div>
         </div>
       </div>
@@ -21,7 +49,7 @@
       </div>
     </div>
     <!-- <div class="actions-wrapper">
-      <a href="#"><Button text="Get Started"/></a>
+      <a href="#"><Button :tabIndex="-1" text="Get Started"/></a>
       <div>Already have an account? <a href="#">Log in</a></div>
     </div> -->
   </div>
@@ -29,17 +57,35 @@
 
 <script>
 import Button from '../components/Button.vue';
+import NonValidatingInput from '../components/NonValidatingInput.vue';
 // @ is an alias to /src
 
 export default {
   name: 'Home',
-  components: { Button },
+  components: { Button, NonValidatingInput },
+  data() {
+    return {
+      meetingCode: '',
+      error: '',
+    };
+  },
+  props: {
+    isLoggedIn: Boolean,
+  },
+  methods: {
+    submitEvent() {
+      if (!this.$refs.form.checkValidity()) {
+        this.error = 'Meeting Code cannot be empty';
+      } else {
+        // ToDo: async stuff
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .home {
-  margin-top: 5rem;
   padding: 0 2rem;
   display: flex;
 
@@ -71,27 +117,42 @@ img {
   gap: 2rem;
 }
 
+.one-liner {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  width: max-content;
+}
+
 .text-wrapper p {
   font-size: clamp(1.4rem, 2.4vw, 3rem);
   text-align: left;
   font-weight: 500;
 }
 
-.actions-wrapper {
+.actions {
   font-size: 1.2rem;
   display: flex;
   gap: 2rem;
   width: 100%;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
-.actions-wrapper > div {
-  align-self: flex-end;
+.actions > form {
+  /* align-self: flex-end; */
   font-size: 1.1rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
+  .actions {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}
+@media screen and (max-width: 700px) {
   .home {
     gap: 3rem;
   }
@@ -111,17 +172,21 @@ img {
     text-align: center;
   }
 
-  .actions-wrapper {
+  .actions {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.8rem;
   }
 
-  .actions-wrapper div {
+  .actions div {
     width: 100%;
     text-align: center;
     font-size: 0.8rem;
+  }
+
+  .actions form {
+    text-align: start;
   }
 }
 </style>

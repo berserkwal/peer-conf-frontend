@@ -1,5 +1,5 @@
 <template>
-  <button tabindex="-1">
+  <button>
     {{ text }}
   </button>
 </template>

@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'InputComponent',
+  name: 'ValidatingInput',
   data() {
     return {
       hasError: false,
@@ -58,21 +58,26 @@ input {
   border: none;
   box-shadow: 0 0 0 0.25px black;
   padding: 0.25rem 0.5rem;
-  width: 100%;
   font-family: inherit;
-  font-size: 1rem;
+  width: 100%;
+  font-size: 1em;
   outline: none;
-}
-
-input:focus {
-  box-shadow: 0 0 0 2px var(--color-text);
+  --shadow: var(--color-text);
 }
 
 input.error {
-  box-shadow: 0 0 0 2px crimson;
+  --shadow: indianred;
+  box-shadow: 0 0 0 1px var(--shadow);
 }
 
 input:valid {
-  box-shadow: 0 0 0 2px darkgreen;
+  --shadow: darkseagreen;
+  box-shadow: 0 0 0 1px var(--shadow);
+}
+
+input:focus,
+input.error:focus,
+input:valid:focus {
+  box-shadow: 0 0 0 1px var(--shadow), 0 0 4px 0 var(--shadow);
 }
 </style>
